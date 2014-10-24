@@ -1,0 +1,7 @@
+{"total":28,"rows":[
+	{"id":"1","officeName":"办公室","name":"李苏","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"2","officeName":"办公室","name":"张三","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"3","officeName":"办公室","name":"李四","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""}
+	
+	
+]}

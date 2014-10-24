@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/demo.css">
+	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
+	
+	<script type="text/javascript">
+	 var data = {"total":28,"rows":[
+	{"id":"1","officeName":"办公室","name":"李苏","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"2","officeName":"办公室","name":"张三","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"3","officeName":"办公室","name":"李四","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""}
+	
+	
+]};
+	$(function(){
+		$('#tt').datagrid({  
+			
+			onLoadSuccess:function(data){  
+				$('.editcls').linkbutton({text:'明细',plain:true,iconCls:'icon-edit'});  
+			}  
+		});  
+
+	
+	});
+	function rowformater(value,row,index)
+	 {
+
+		return '<a href="#" onclick="detail(\''+row.id+'\')" class="editcls" >明细</a>';
+	 }	
+	 
+	 function detail(id){
+			
+		$('#dlg').dialog('open');
+	 }
+	
+	</script>
+</head>
+<body style="height:550px;">
+	
+            
+			<table id="tt" class="easyui-datagrid"
+					data-options="rownumbers:true,singleSelect:true,toolbar:'#dlg-toolbar'" height='100%'>
+				<thead>
+					<tr>
+						<th data-options="field:'officeName'" width="9%">部门</th>
+						<th data-options="field:'name'" width="5%">姓名</th>
+						<th data-options="field:'createDate',align:'right'" width="15%">工作日期</th>
+						<th data-options="field:'endDate',align:'right'" width="15%">上午上班时间</th>
+						<th data-options="field:'jzkq',align:'right'" width="15%">上午下班时间</th>
+						<th data-options="field:'workDays',align:'center'" width="15%">下午上班时间</th>
+						<th data-options="field:'actualDays',align:'right'" width="15%">下午下班时间	</th>
+						<th data-options="field:'xjgs',align:'center'" width="10%">实际班长</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>办公室</td>
+						<td>wj</td>
+						<td>2014-10-1</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+					<tr>
+						<td>办公室</td>
+						<td>wj</td>
+						<td>2014-10-2</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+				<tr>
+						<td>办公室</td>
+						<td>wj</td>
+						<td>2014-10-3</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+				</tbody>
+			</table>
+  
+    <div id="dlg-toolbar" style="padding:2px 0">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="padding-left:2px">
+					<div align='center'>
+						时间范围 <input class="easyui-datetimebox"  style="width:200px">至 <input class="easyui-datetimebox"  style="width:200px">
+						<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true">查询</a>
+					</div>
+                </td>
+               
+            </tr>
+        </table>
+    </div>
+	
+	
+	
+	
+		
+		
+		
+		
+				
+	
+ <script>
+ 
+	
+	</script>
+</body>
+</html>

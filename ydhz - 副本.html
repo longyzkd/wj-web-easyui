@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/demo.css">
+	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
+	
+	<script type="text/javascript">
+	 var data = {"total":28,"rows":[
+	{"id":"1","officeName":"办公室","name":"李苏","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"2","officeName":"办公室","name":"张三","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"3","officeName":"办公室","name":"李四","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""}
+	
+	
+]};
+	$(function(){
+		$('#tt').datagrid({  
+			
+			onLoadSuccess:function(data){  
+				$('.editcls').linkbutton({text:'明细',plain:true,iconCls:'icon-edit'});  
+			}  
+		});  
+
+	
+	});
+	function rowformater(value,row,index)
+	 {
+
+		return '<a href="#" onclick="detail(\''+row.id+'\')" class="editcls" >明细</a>';
+	 }	
+	 
+	 function detail(id){
+			
+		$('#dlg').dialog('open');
+	 }
+	
+	</script>
+</head>
+<body>
+	 <div id="dlg" class="easyui-dialog" title="考勤查看" style="width:800px;height:400px;padding:10px"
+            data-options=" iconCls: 'icon-save',
+                           
+			   closed:true,modal:true,cache:false ">
+            
+			<table id="tt" class="easyui-datagrid"
+					data-options="rownumbers:true,singleSelect:true,toolbar:'#dlg-toolbar'" height='100%'>
+				<thead>
+					<tr>
+						<th data-options="field:'officeName'" width="9%">部门</th>
+						<th data-options="field:'name'" width="5%">姓名</th>
+						<th data-options="field:'createDate',align:'right'" width="15%">工作日期</th>
+						<th data-options="field:'endDate',align:'right'" width="15%">上午上班时间</th>
+						<th data-options="field:'jzkq',align:'right'" width="15%">上午下班时间</th>
+						<th data-options="field:'workDays',align:'center'" width="15%">下午上班时间</th>
+						<th data-options="field:'actualDays',align:'right'" width="15%">下午下班时间	</th>
+						<th data-options="field:'xjgs',align:'center'" width="10%">实际班长</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>办公室</td>
+						<td>李苏</td>
+						<td>2014-10-1</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+					<tr>
+						<td>办公室</td>
+						<td>李苏</td>
+						<td>2014-10-2</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+				<tr>
+						<td>办公室</td>
+						<td>李苏</td>
+						<td>2014-10-3</td>
+						<td>8:30</td>
+						<td>12:00</td>
+						<td>14:30</td>
+						<td>18:30</td>
+						<td>7.00</td>
+						
+					</tr>
+				</tbody>
+			</table>
+    </div>
+    <div id="dlg-toolbar" style="padding:2px 0">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="padding-left:2px">
+					<div align='center'>
+						时间范围 <input class="easyui-datetimebox"  style="width:200px">至 <input class="easyui-datetimebox"  style="width:200px">
+						<a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+					</div>
+                </td>
+               
+            </tr>
+        </table>
+    </div>
+	
+	
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-layout" style="width:1550px;height:700px;">
+		<div data-options="region:'north'" style="height:50px">
+			<div style="padding-top:15px">您当前所在位置：疾控OA考勤->月度汇总</div>
+		</div>
+		
+		
+		<div data-options="region:'west',split:true" title="菜单" style="width:200px;">
+			
+			
+				<ul class="easyui-tree">
+					<li>
+						<span>菜单</span>
+						<ul>
+							<li data-options="state:'closed'">
+								<span>考勤</span>
+								<ul>
+									<li>
+										<span>实时考勤	</span>
+									</li>
+									<li>
+										<span>导入考勤	</span>
+									</li>
+									<li>
+										<span><a href="ydhz.html">月度汇总</a></span>
+									</li>
+									<li>
+										<span>员工请假统计</span>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span>系统设置</span>
+								<ul>
+									<li><a href="qxsz.html">权限设置</a></li>
+									<li>部门考勤时间设置</li>
+									<li>员工考情类别设置</li>
+									<li>特殊人员设置</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</li>
+				</ul>
+    
+		
+		</div>
+		<div data-options="region:'center',title:'月度汇总',iconCls:'icon-ok'">
+			<table id="tt" class="easyui-datagrid"
+					data-options="rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get',toolbar:'#tb'" height='100%'>
+				<thead>
+					<tr>
+						<th data-options="field:'officeName'" width="10%">部门</th>
+						<th data-options="field:'name'" width="10%">姓名</th>
+						<th data-options="field:'createDate',align:'right'" width="10%">开始日期</th>
+						<th data-options="field:'endDate',align:'right'" width="10%">结束日期</th>
+						<th data-options="field:'jzkq',align:'right'" width="5%">集中考勤</th>
+						<th data-options="field:'workDays',align:'center'" width="5%">上班天数</th>
+						<th data-options="field:'actualDays',align:'right'" width="5%">实际班次</th>
+						<th data-options="field:'xjgs',align:'center'" width="5%">小计工时</th>
+						<th data-options="field:'jbgs',align:'right'" width="5%">加班工时</th>
+						<th data-options="field:'jbje',align:'center'" width="5%">加班金额</th>
+						<th data-options="field:'kggs',align:'right'" width="5%">旷工工时</th>
+						<th data-options="field:'kgje',align:'center'" width="5%">旷工金额</th>
+						<th data-options="field:'jbfzt',align:'center'" width="10%">加班费状态</th>
+						
+						<th data-options="field:'id',align:'center',formatter:rowformater" width='10%'>操作</th>
+					</tr>
+				</thead>
+				
+			</table>
+			<!--<table id='tt' class="easyui-datagrid"> </table>-->
+			<div id="tb" style="padding:5px;height:auto">
+      
+				<div>
+					
+					
+					
+					年度:  <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						 <option value="java">-请选择-</option>
+					</select>
+					月份:  <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					</select>
+					部门: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					   
+					</select>
+					 人员: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+					   <option value="java">-请选择-</option>
+					</select>
+					  集中考勤: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					</select>
+					 缺勤状态: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					</select>
+					 加班状态: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					</select>
+				
+				</div>
+				<div align='center' margin='5 '>
+				
+				<select id="cc" style="width:150px"></select>
+					<div id="sp">
+						<div style="color:#99BBE8;background:#fafafa;padding:5px;">选择显示列</div>
+						<div style="padding:10px">
+							<input type="checkbox" id="checkAll" value="01"><span>全选</span><br/>	
+							
+							<input type="checkbox" name="officeName" value="01" gridWidth='10%' ><span>部门</span><br/>
+							<input type="checkbox" name="name" value="02" gridWidth='10%'><span>姓名</span><br/>
+							<input type="checkbox" name="createDate" value="03" gridWidth='10%'> <span>开始日期</span><br/>
+							<input type="checkbox" name="endDate" value="04" gridWidth='10%'><span>结束日期</span><br/>
+							<input type="checkbox" name="jzkq" value="05" gridWidth='5%'><span>集中考勤</span><br/>
+							
+							<input type="checkbox" name="workDays" value="01" gridWidth='5%'><span>上班天数</span><br/>
+							<input type="checkbox" name="actualDays" value="02" gridWidth='5%'><span>实际班次</span><br/>
+							<input type="checkbox" name="xjgs" value="03" gridWidth='5%'><span>小计工时</span><br/>
+							<input type="checkbox" name="jbgs" value="04" gridWidth='5%'><span>加班工时</span><br/>
+							<input type="checkbox" name="jbje" value="05" gridWidth='5%'><span>加班金额</span><br/>
+							
+							<input type="checkbox" name="kggs" value="03" gridWidth='5%'><span>旷工工时</span><br/>
+							<input type="checkbox" name="kgje" value="04" gridWidth='5%'><span>旷工金额</span><br/>
+							<input type="checkbox" name="jbfzt" value="05" gridWidth='10%'><span>加班费状态</span>
+						</div>
+					</div>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search">统计汇总</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search">打印</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search">导出</a>
+				</div>
+			</div>	
+		</div>
+	</div>
+ <script>
+ $.extend({
+        inArray_:function(array,item) {
+           
+           
+		   for (var index = 0; index < array.length; index++) {
+				if (array[index] === item || array[index].field == item.field) {
+				   return true;
+				}
+			}
+            return false;
+        }
+    });
+	
+	
+ Object.defineProperty(Array.prototype, "remove", {
+    enumerable: false,
+    value: function (item) {
+        var removeCounter = 0;
+
+        for (var index = 0; index < this.length; index++) {
+            if (this[index] === item || this[index].field == item.field) {
+                this.splice(index, 1);
+                removeCounter++;
+                index--;
+            }
+        }
+        return removeCounter;
+    }
+});
+
+
+
+		$(function(){
+			$("#checkAll").click(function(){
+				$('input:checkbox').not(this).prop('checked', this.checked).trigger("change");
+			});
+			
+			 $('#cc').combo({
+                
+                editable:false
+            });
+            $('#sp').appendTo($('#cc').combo('panel'));
+		//	var texts =''
+			var showColumns = [];
+			var result = [];
+            $('#sp input[id!="checkAll"]').change(function(){
+                var v = $(this).val();
+                var s = $(this).next('span').text();
+				//texts = texts+s+' ';
+                //$('#cc').combo('setValue', v).combo('setText', s).combo('hidePanel');
+				//$('#cc').combo('setText', texts);
+				var name =  $(this).attr('name');
+				var column  = {};
+				column.field = name;
+				column.title = s;
+				column.width=$(this).attr('gridWidth');
+				//if($(this).attr("checked")){
+				if($(this).context.checked){
+					if(! $.inArray_(showColumns, column) ){
+						showColumns.push(column);
+					}
+					
+				}else{
+				
+					showColumns.remove(column);
+				}
+				//检验是否存在重复元素	
+				//result = $.distinctObj(showColumns);
+				//showColumns.push({field:'id',title:'操作',width:'10%',formatter:'rowformater'})
+				$('#tt').datagrid({
+					columns:[showColumns],
+					onLoadSuccess:function(data){  
+						$('.editcls').linkbutton({text:'明细',plain:true,iconCls:'icon-edit'});  
+        }  
+				});
+            });
+		});
+	
+	</script>
+</body>
+</html>

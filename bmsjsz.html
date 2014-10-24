@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/demo.css">
+	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
+	
+	<script type="text/javascript">
+	 var data = {"total":28,"rows":[
+	{"id":"1","officeName":"办公室","name":"李苏","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"2","officeName":"办公室","name":"张三","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""},
+	{"id":"3","officeName":"办公室","name":"李四","createDate":"2014-10-1","endDate":"2014-10-31","jzkq":36.50,"workDays":"10","actualDays":"1"   ,"xjgs":"5","jbgs":"4","jbje":10.00,"kggs":"100","kgje":36.50,"jbfzt":""}
+	
+	
+]};
+	$(function(){
+		$('#tt').datagrid({  
+			
+			onLoadSuccess:function(data){  
+				$('.editcls').linkbutton({text:'明细',plain:true,iconCls:'icon-edit'});  
+			}  
+		});  
+
+	
+	});
+	function rowformater(value,row,index)
+	 {
+
+		return '<a href="#" onclick="detail(\''+row.id+'\')" class="editcls" >明细</a>';
+	 }	
+	 
+	 function detail(id){
+			
+		$('#dlg').dialog('open');
+	 }
+	
+	</script>
+</head>
+<body >
+	 
+	
+	
+	
+	<div class="easyui-layout" style="width:1300px;height:550px;">
+       
+        <div data-options="region:'west',split:true,title:'部门',collapsible:false" style="width:150px;">
+           
+				<ul class="easyui-tree">
+					
+						
+							<li data-options="state:'closed'">
+								<span>主任室</span>
+								<ul>
+									<li>
+										<span>办公室</span>
+										<ul>
+											<li>
+												<span>人事科</span>
+											</li>
+											<li>
+												<span>财务科</span>
+											</li>
+										</ul>
+										
+									</li>
+									<li>
+										<span>xx</span>
+									</li>
+									<li>
+										<span>xx</span>
+									</li>
+								</ul>
+							</li>
+							
+							<li>血防科</li>
+							<li>检验科</li>
+							
+						
+					
+				</ul>
+    
+        </div>
+        <div data-options="region:'center',title:'扬州市疾病预防控制中心（标准时间）',iconCls:'icon-ok'" style="padding:10px">
+			 <form id="ff" method="post">
+            <table cellpadding="5">
+                <tr>
+                    <td>上午上班时间:</td>
+                    <td>  <input class="easyui-timespinner" 
+					data-options="min:'08:30',max:'08:30' ,
+							
+							icons:[{
+								iconCls:'icon-clear',
+								handler: function(e){
+									$(e.data.target).datetimespinner('clear');
+								}}]"
+             style="width:100px;"></td>
+			  <td>上午上班考勤时间:</td>
+			<td>  <input class="easyui-timespinner" 
+			data-options="min:'08:15',max:'08:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;">-<input class="easyui-timespinner" 
+			data-options="min:'08:15',max:'08:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;"></td>
+                </tr>
+                
+				
+				  <tr>
+                    <td>上午下班时间:</td>
+                    <td>  <input class="easyui-timespinner" 
+					data-options="min:'12:00',max:'12:00' ,
+							
+							icons:[{
+								iconCls:'icon-clear',
+								handler: function(e){
+									$(e.data.target).datetimespinner('clear');
+								}}]"
+             style="width:100px;"></td>
+			  <td>上午下班考勤时间:</td>
+			<td>  <input class="easyui-timespinner" 
+			data-options="min:'11:45',max:'12:15' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;">-<input class="easyui-timespinner" 
+			data-options="min:'08:15',max:'08:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;"></td>
+                </tr>
+				
+				  <tr>
+                    <td>下午上班时间:</td>
+                    <td>  <input class="easyui-timespinner" 
+					data-options="min:'14:30',max:'14:30' ,
+							
+							icons:[{
+								iconCls:'icon-clear',
+								handler: function(e){
+									$(e.data.target).datetimespinner('clear');
+								}}]"
+             style="width:100px;"></td>
+			  <td>下午上班考勤时间:</td>
+			<td>  <input class="easyui-timespinner" 
+			data-options="min:'14:15',max:'14:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;">-<input class="easyui-timespinner" 
+			data-options="min:'08:15',max:'08:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;"></td>
+                </tr>
+				
+				  <tr>
+                    <td>下午下班时间:</td>
+                    <td>  <input class="easyui-timespinner" 
+					data-options="min:'18:00',max:'18:00' ,
+							
+							icons:[{
+								iconCls:'icon-clear',
+								handler: function(e){
+									$(e.data.target).datetimespinner('clear');
+								}}]"
+             style="width:100px;"></td>
+			  <td>下午下班考勤时间:</td>
+			<td>  <input class="easyui-timespinner" 
+			data-options="min:'17:45',max:'18:15' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;">-<input class="easyui-timespinner" 
+			data-options="min:'08:15',max:'08:45' ,
+					
+					icons:[{
+						iconCls:'icon-clear',
+						handler: function(e){
+							$(e.data.target).datetimespinner('clear');
+						}}]"
+	 style="width:100px;"></td>
+                </tr>
+            </table>
+        </form>
+        <div style="text-align:center;margin-top:250px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+        </div>
+		
+        </div>
+    </div>
+		
+		
+		
+		
+			
+				
+			
+				
+				
+	
+	<script>
+		/*
+		function formatN(value){
+		  return (value < 10 ? '0' : '') + value;
+		}
+		function formatter2(date){
+            if (!date){return '';}
+            var h = date.getHours();
+            var m = date.getMinutes();
+           // return h + ':' + (m<10?('0'+m):m);
+		   var tt = [formatN(h), formatN(m)];
+		
+			return tt.join(':');
+        }
+        function parser2(s){
+            if (!s){return null;}
+            var ss = s.split(':');
+            var h = parseInt(ss[0],10);
+            var m = parseInt(ss[1],10);
+            if (!isNaN(h) && !isNaN(m)){
+                return new Date(1900, 0, 0, 
+		parseInt(h,10)||0, parseInt(m,10)||0);
+            } else {
+                return new Date();
+            }
+        }
+		*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/demo.css">
+	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
+	<!--<link href="themes/jkzx.min.css" type="text/css" rel="stylesheet" />-->
+	<script type="text/javascript">
+	$(function(){
+		$('#tt').datagrid({  
+			
+			onLoadSuccess:function(data){  
+				$('.editcls').linkbutton({text:'明细',plain:true,iconCls:'icon-edit'});  
+			}  
+		});  
+	  
+	});
+	function rowformater(value,row,index)
+	 {
+
+		return '<a href="#" onclick="detail(\''+row.id+'\')" class="editcls" >明细</a>';
+	 }	
+	 
+	 function detail(id){
+			
+		$('#dlg').dialog('open');
+	 }
+	
+	</script>
+</head>
+<body>
+	
+	
+	
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-layout" style="width:1550px;height:700px;">
+		<div data-options="region:'north'" style="height:50px">
+			<div style="padding-top:15px">您当前所在位置：疾控OA考勤->权限设置</div>
+				<div id="header" class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<ul class="nav pull-right">
+							 <li><a href="${pageContext.request.contextPath}${fns:getFrontPath()}/index-${fnc:getCurrentSiteId()}.html" target="_blank" title="访问网站主页"><i class="icon-home"></i></a></li>
+							
+							 <!--<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, <shiro:principal property="name"/></a>
+								<ul class="dropdown-menu">
+								  <li><a href="${ctx}/sys/user/info" target="mainFrame"><i class="icon-user"></i>&nbsp; 个人信息</a></li>
+								  <li><a href="${ctx}/sys/user/modifyPwd" target="mainFrame"><i class="icon-lock"></i>&nbsp;  修改密码</a></li>
+								</ul>
+							 </li>-->
+							 <li><a href="${ctx}/logout" title="退出登录">退出</a></li>
+							 <li>&nbsp;</li>
+						</ul>
+					</div>
+			   </div>
+		</div>
+		
+		
+		<div data-options="region:'west',split:true" title="菜单" style="width:200px;">
+			
+			
+				<ul class="easyui-tree">
+					<li>
+						<span>菜单</span>
+						<ul>
+							<li data-options="state:'closed'">
+								<span>考勤</span>
+								<ul>
+									<li>
+										<span>实时考勤	</span>
+									</li>
+									<li>
+										<span>导入考勤	</span>
+									</li>
+									<li>
+										<span > <a href="ydhz.html">月度汇总</a></span>
+									</li>
+									<li>
+										<span>员工请假统计</span>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span>系统设置</span>
+								<ul>
+									<li><a href="qxsz.html">权限设置</a></li>
+									<li>部门考勤时间设置</li>
+									<li>员工考情类别设置</li>
+									<li>特殊人员设置</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</li>
+				</ul>
+    
+		
+		</div>
+		<div data-options="region:'center',title:'权限设置',iconCls:'icon-ok'">
+			<table id="dg" class="easyui-datagrid"
+					data-options="rownumbers:true,singleSelect:true,toolbar:'#qxsz_tb'" height='100%'>
+				<thead>
+					<tr>
+						<th data-options="field:'officeName',editor:'text', " width="50%">部门</th>
+						<th data-options="field:'name',editor:'text'" width="49%">姓名</th>
+						
+						
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>主任室</td>
+						<td>孙兰芳</td>
+						
+						
+					</tr>
+					<tr>
+						<td>主任室</td>
+						<td>何日</td>
+						
+					</tr>
+				<tr>
+						<td>主任室</td>
+						<td>金武</td>
+						
+					</tr>
+				</tbody>
+			</table>
+			<!--<table id='tt' class="easyui-datagrid"> </table>-->
+			<div id="qxsz_tb" style="padding:5px;height:auto">
+      
+				<div>
+					
+					
+					
+				
+					部门: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+						<option value="java">-请选择-</option>
+					   
+					</select>
+					 人员: 
+					<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+					   <option value="java">-请选择-</option>
+					</select>
+					<a href="#" class="easyui-linkbutton" onclick="append()" iconCls="icon-add" plain="true">添加</a>
+					
+					<a href="#" class="easyui-linkbutton" onclick="removeit()" iconCls="icon-remove" plain="true">删除</a>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存</a>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">撤销</a>
+				</div>
+				<div style="margin-bottom:5px">
+					注：下列员工为主任级以上人员，不打考勤记录不会影响工时统计！
+					
+				</div>
+				
+				
+			</div>	
+		</div>
+	</div>
+ <script>
+	var editIndex = undefined;
+	function endEditing(){
+		if (editIndex == undefined){return true}
+		if ($('#dg').datagrid('validateRow', editIndex)){
+			var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'officeName'});
+			//var productname = $(ed.target).combobox('getText');
+			var officeName = 11;
+			$('#dg').datagrid('getRows')[editIndex]['officeName'] = officeName;
+			$('#dg').datagrid('endEdit', editIndex);
+			editIndex = undefined;
+			return true;
+		} else {
+			return false;
+		}
+	}
+   function append(){
+		if (endEditing()){
+			$('#dg').datagrid('appendRow',{status:'P'});
+			editIndex = $('#dg').datagrid('getRows').length-1;
+			$('#dg').datagrid('selectRow', editIndex)
+					.datagrid('beginEdit', editIndex);
+		}
+	}
+		
+	 function removeit(){
+		if (editIndex == undefined){return}
+		$('#dg').datagrid('cancelEdit', editIndex)
+				.datagrid('deleteRow', editIndex);
+		editIndex = undefined;
+	}
+    function accept(){
+		if (endEditing()){
+			$('#dg').datagrid('acceptChanges');
+		}
+	}
+	function reject(){
+		$('#dg').datagrid('rejectChanges');
+		editIndex = undefined;
+	}
+	</script>
+</body>
+</html>
