@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="static/css/demo.css">
 	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="static/css/ny_ys.css">
 	<script type="text/javascript" src="static/js/jquery.min.js"></script>
 	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
 <style type="text/css">
@@ -68,7 +69,7 @@
 		}else{
 			user= username;
 		}
-		$('#timeInfo').html('欢迎你，'+user+'&nbsp;&nbsp;&nbsp;&nbsp;'+date.toLocaleString()+"&nbsp;&nbsp;");
+		$('#timeInfo').html('&nbsp;&nbsp;&nbsp;欢迎您，'+user+'&nbsp;&nbsp;&nbsp;&nbsp;'+date.toLocaleString()+"&nbsp;&nbsp;");
 	}
 	setInterval(showTime,1000);
 	
@@ -124,7 +125,7 @@
 	
 	<div id="cc" class="easyui-layout" style="width:100%;height:100%;">
 		<!-- 页面顶部top及菜单栏 -->  
-	    <div region="north" style="width: 100%;">
+	   <!-- <div region="north" style="width: 100%;">
 	    	<div class="header">
 				<div style="text-align:right;padding-right: 20px;padding-top: 20px;">
 					<span style="color:#ddd" id="timeInfo"></span>
@@ -133,7 +134,31 @@
 				<div class="maintitle" style="top: 10;">疾控中心OA</div>
 			</div>
 	    	
-	    </div>  
+	    </div> -->
+		<div region="north" style="width: 100%;">
+	    	<div class="top">
+				<div class="top_1">
+				   
+					<div class="top_left top_02"><img src="static/images/dzzw_gwjh.gif" width="400" height="82" alt=""></div>
+					
+					<div class="top_r top_03">
+						
+					</div>
+				</div>	
+				<div class="top_2">
+					
+					<!--<div class="top_2_text yhxx">&nbsp;&nbsp;&nbsp;您好：超级管理员 (系统管理员,收文帐号:admin)&nbsp;&nbsp;&nbsp;</div>-->
+					<div class="top_2_text yhxx" id="timeInfo"></div>
+					
+					<div class="top_2_text2 yhxx">
+						<span class="noline" onclick="showdiv('1');" style="cursor:pointer"><font color="#FFFFFF">催收号码</font></span>&nbsp;&nbsp;
+						<span class="noline" onclick="alert2('手机号码','/mobile.php','340','280');" style="cursor:pointer"><font color="#FFFFFF">手机号码</font></span>&nbsp;&nbsp;
+						<span class="noline" onclick="location.href='login.html'" style="cursor:pointer"><font color="#FFFFFF">退出系统</font></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</div>
+				
+			</div>
+	    	
+	    </div>  		
 	    <!-- 页面底部信息 -->
 	    <div region="south" style="height: 35px;" >
 	    	<center>
